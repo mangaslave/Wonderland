@@ -1,0 +1,20 @@
+{
+  "name": "wonderland",
+  "module": "server/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun server/index.ts",
+    "dev": "bun --watch server/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "hono": "^4.6.12"
+  }
+}
