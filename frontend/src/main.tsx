@@ -1,10 +1,35 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { ClerkProvider } from "@clerk/clerk-react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import App from "./App";
+import Dashboard from "./pages/Dashboard";
+import "./App.css";
+import UserSignupSync from "./UserSync";
 
-createRoot(document.getElementById('root')!).render(
+if (!import.meta.env.VITE_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+  throw new Error("Missing Clerk publishable key. Set VITE_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env.local file.");
+}
+
+const clerkKey = import.meta.env.VITE_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <ClerkProvider publishableKey={clerkKey}>
+      <Router>
+        <UserSignupSync />
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route
+          path="/dashboard"
+          element={
+              <Dashboard />
+          }
+        />
+          <Route path="/signin" element={<App />} /> 
+          <Route path="/signup" element={<App />} /> 
+        </Routes>
+      </Router>
+    </ClerkProvider>
+  </StrictMode>
+);

@@ -1,21 +1,23 @@
-import { Hono } from 'hono';
-import axios from 'axios';
-
-const router = new Hono();
-
 const API_KEY = process.env.TMDB_API_KEY;
-const TMDB_URL = 'https://api.themoviedb.org/3';
 
-router.get('/top10', async (c) => {
-  try {
-    const response = await axios.get(`${TMDB_URL}/trending/movie/day`, {
-      params: { api_key: API_KEY },
-    });
-    const top10 = response.data.results.slice(0, 10);
-    return c.json(top10);
-  } catch (err) {
-    return c.json({ error: 'Failed to fetch data' }, 500);
+
+export default async function fetchTop10Movies() {
+    const TMDB_URL = "https://api.themoviedb.org/3/trending/movie/day";
+  
+    try {
+      const response = await fetch(`${TMDB_URL}?api_key=${API_KEY}`);
+      const data = await response.json();
+      const top10 = data.results.slice(0, 10);
+
+      console.log("top", top10);
+  
+      return new Response(JSON.stringify(top10), {
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (error) {
+      return new Response(
+        JSON.stringify({ error: "Failed to fetch Top 10 movies" }),
+        { headers: { "Content-Type": "application/json" }, status: 500 }
+      );
+    }
   }
-});
-
-export default router;

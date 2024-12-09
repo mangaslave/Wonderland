@@ -1,0 +1,12 @@
+{
+  "schema": "./server/db/schema.ts",
+  "out": "./drizzle",
+  "dialect": "sqlite",
+  "dbCredentials": {
+    "url": "./wonderland.sqlite"
+  }
+}
+
+
+
+  
