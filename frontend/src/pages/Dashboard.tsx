@@ -1,20 +1,15 @@
-// import HamburgerSidebar from "@/components/client/appSidebar";
-// import Sidebar from "@/components/client/Headers";
 import Navbar from "@/components/client/MainNav";
 import Top10Movies from "@/components/client/Top10Movies";
-// import { Sidebar } from "lucide-react";
 
-function Dashboard() {
+const Dashboard = () => {
+
   return (
-    <>
+    <div>
       <Navbar />
-
-      <body>
-        <Top10Movies />
-      </body>
-      </>
+      <Top10Movies
+      />
+    </div>
   );
-}
+};
 
 export default Dashboard;
-
