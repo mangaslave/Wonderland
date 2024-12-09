@@ -15,8 +15,8 @@
 ---
 ## 🚀 Next Steps 
 
--Implement searching
--Recommendations by mood
+- Implement searching
+- Recommendations by mood
 
 ---
 
