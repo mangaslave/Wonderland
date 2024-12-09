@@ -34,7 +34,7 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/mangaslave/wonderland.git
+   git clone https://github.com/mangaslave/Wonderland
    cd wonderland
 2. Install dependencies for the backend:
    ```bash
@@ -48,3 +48,15 @@ Ensure you have the following installed:
 5. Start the frontend:
    ```bash
     bun dev
+
+---
+## Environment Variables example
+
+wonderland/.env.local
+   ```bash
+   TMDB_API_KEY=your_key
+   VITE_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key
+   VITE_CLERK_SECRET_KEY=your_key
+```
+
+
